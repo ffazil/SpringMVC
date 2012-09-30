@@ -1,4 +1,4 @@
-package com.mkyong.common.test.controller;
+package com.mvc.test.controller.test;
 
 import com.mvc.test.model.Customer;
 import junit.framework.Assert;
@@ -48,7 +48,7 @@ public class SignUpControllerTest {
     @Test
     public void testSignUp(){
         request.setMethod("POST");
-        request.setRequestURI("/customer/signup");
+        request.setRequestURI("/signup");
 
         final ModelAndView mav;
         Object handler;

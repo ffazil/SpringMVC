@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mvc.test.model.Customer;
 
 @Controller
-@RequestMapping("/customer")
 public class SignUpController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addCustomer(
 			@Valid Customer customer,
 			BindingResult result) {
+        System.out.println("Name = " + customer.getName());
 
 		/*for (Object object : result.getAllErrors()) {
 			if (object instanceof FieldError) {
@@ -33,18 +33,18 @@ public class SignUpController {
 		}*/
 
 		if (result.hasErrors()) {
-			return "SignUpForm";
+			return "/index";
 		} else {
-			return "Done";
+			return "/done";
 		}
 
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String displayCustomerForm(ModelMap model) {
 
 		model.addAttribute("customer", new Customer());
-		return "SignUpForm";
+		return "/index";
 
 	}
 
