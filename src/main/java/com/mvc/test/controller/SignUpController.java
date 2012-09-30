@@ -1,21 +1,27 @@
 package com.mvc.test.controller;
 
 import javax.validation.Valid;
+
+import com.mvc.test.model.CustomerForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.mvc.test.model.Customer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class SignUpController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addCustomer(
-			@Valid Customer customer,
+			@Valid @ModelAttribute("customerForm") CustomerForm customerForm,
 			BindingResult result) {
-        System.out.println("Name = " + customer.getName());
+        System.out.println("Name = " + customerForm.getCustomers().size());
 
 		/*for (Object object : result.getAllErrors()) {
 			if (object instanceof FieldError) {

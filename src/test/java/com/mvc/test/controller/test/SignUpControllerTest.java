@@ -54,11 +54,12 @@ public class SignUpControllerTest {
         Object handler;
         try
         {
-            Customer customer = new Customer();
-            customer.setAge(11);
-            customer.setName("Test");
-            request.setParameter("name", "Test");
-            request.setParameter("age","11");
+            request.setParameter("customers[0].name", "Test 1");
+            request.setParameter("customers[0].age","11");
+
+            request.setParameter("customers[1].name", "Test 2");
+            request.setParameter("customers[1].age","12");
+
             handler = handlerMapping.getHandler(request).getHandler();
             mav = handlerAdapter.handle(request, response, handler);
             Assert.assertEquals(200, response.getStatus());
