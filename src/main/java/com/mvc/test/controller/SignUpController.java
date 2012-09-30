@@ -19,7 +19,7 @@ public class SignUpController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String addCustomer(
-			@Valid @ModelAttribute("customerForm") CustomerForm customerForm,
+			@Valid CustomerForm customerForm,
 			BindingResult result) {
         System.out.println("Name = " + customerForm.getCustomers().size());
 
